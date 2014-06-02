@@ -1,0 +1,32 @@
+{% extends "OVEAuthentificationBundle:Default:ove-base.html.twig" %}
+{% block content -%}
+    <h1>Liste des Termes</h1>
+    <table  width="100%" class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id Thésaurus</th>
+                <th>Terme</th>
+                <th>Description</th>
+                <th>Id Terme Parent</th>
+                <!--<th>Id Terme Associé</th>-->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td style="text-align:center"><a href="{{ path('terme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td style="text-align:center">{{ entity.idthesaurus }}</td>
+                <td style="text-align:left">{{ entity.terme }}</td>
+                <td style="text-align:left">{{ entity.description }}</td>
+                <td style="text-align:center">{{ entity.idtermeparent }}</td>
+                <!--<td style="text-align:center">{{ entity.idtermeassocie }}</td>-->
+                <td style="text-align:center">
+                 <a href="{{ path('terme_edit',   { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-sm btn-default" href="{{ path('terme_new') }}"><span class="glyphicon glyphicon-plus"></span> Ajouter un nouveau Terme</a>
+{% endblock %}

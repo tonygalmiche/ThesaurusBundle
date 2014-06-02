@@ -1,0 +1,10 @@
+{% extends "OVEAuthentificationBundle:Default:ove-base.html.twig" %}
+
+{% block content -%}
+    <h1>Création Terme</h1>
+    <form action="{{ path('terme_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        </p>
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> Créer</button>
+    </form>
+{% endblock %}

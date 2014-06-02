@@ -1,0 +1,96 @@
+{% extends "OVEAuthentificationBundle:Default:ove-base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent()}}
+  <link href="{{ asset('bundles/ovethesaurus/vakata-jstree/dist/themes/default/style.min.css') }}" rel="stylesheet" type="text/css" media="screen" />
+  <link href="{{ asset('bundles/ovethesaurus/css/styles.css') }}" rel="stylesheet" type="text/css" media="screen" />
+{% endblock %}
+
+
+{% block content %}
+  <div id="container" class="container">
+    <h1>Gestion des Thésaurus</h1>
+
+    <div class="row">
+      <div class="col-sm-12 text-left" style="margin:10px">
+        <form class="form-inline" role="form">
+          {% for entity in entities %}
+            <a class="form-control btn {{ entity.btn }}" href="?id={{ entity.id}}" style="margin-bottom: 5px;"><span class="glyphicon glyphicon-list-alt"></span> {{ entity.nom }}</a>
+          {% endfor %}
+
+          {% if is_granted('ROLE_PARAM') or is_granted('ROLE_ADMIN')  %}
+            {% if id %}
+              <div>
+                <input  type="hidden" name="id" value="{{id}}">
+                <input class="form-control" style="margin-bottom: 5px;" id="name" name="rename" value="{{nom}}" placeholder="{{nom}}">
+                <button type="submit" class="btn btn-default" style="margin-bottom: 5px;">Renommer</button>
+                {% if bouton_supprimer %}
+                  <button type="submit" class="btn btn-danger" name="supprimer" value="supprimer" style="margin-bottom: 5px;">Supprimer</button>
+                {% endif %}
+              </div>
+            {% else %}
+              <input class="form-control" style="margin-bottom: 5px;" id="name" name="name" placeholder="Nouveau Thesaurus">
+              <button type="submit" class="btn btn-default" style="margin-bottom: 5px;">Créer</button>
+            {% endif %}
+          {% endif %}
+        </form>
+      </div>
+    </div></p>
+
+    {% if id %}
+      <h1>{{nom}}</h1>
+      <div class="row">
+        <div class="col-sm-6 text-left">
+          <button id="developper">Développer</button>
+          <button id="reduire">Réduire</button></p>
+          <input id="recherche" type="text"  placeholder="Recherche"></p>
+          <div id="jstree"></div></p>
+          {% if is_granted('ROLE_PARAM') or is_granted('ROLE_ADMIN')  %}
+            <button id="ajouter">Ajouter sous la sélection</button>
+            <button id="ajouter_racine">Ajouter à la racine</button>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 text-left" id="node_detail" style="display:none">
+          <form class="form" role="form" >
+            <input id="node_id" style="display:none">
+            <input type=""hidden id="node_nb_enfants">
+            <div class="form-group">
+              <label class="control-label nowrap" style="text-align:left">Terme : </label>
+              <input type="text" class="form-control" id="node_terme">
+            </div>
+            <div class="form-group">
+              <label class="control-label nowrap text-left">Description : </label>
+              <textarea class="form-control" rows="3" id="node_description"></textarea>
+            </div>
+          </form>
+          {% if is_granted('ROLE_PARAM') or is_granted('ROLE_ADMIN')  %}
+          <form class="form" role="form" >
+            <div class="form-group">
+                <button id="node_supprimer" class="btn btn-danger">Supprimer</button>
+            </div>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  </p></p>
+{% endblock %}
+
+
+{% block javascripts %}
+  {{ parent()}}
+
+  <script>
+    var json = $.parseJSON('{{ json | raw }}');
+    var id_thesaurus='{{id}}';
+    var ROLE_PARAM='{{ROLE_PARAM}}';
+    var webservice_token='{{webservice_token}}';
+    //json="{{json}}";
+    //alert("json="+json);
+  </script>
+
+  <script src="{{ asset('bundles/ovethesaurus/vakata-jstree/dist/jstree.min.js') }}"></script>
+  <script src="{{ asset('bundles/ovethesaurus/js/thesaurus.js') }}"></script>
+{% endblock %}
+

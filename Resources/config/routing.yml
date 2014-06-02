@@ -1,0 +1,39 @@
+#ove_thesaurus_homepage:
+#    pattern:  /
+#    defaults: { _controller: OVEThesaurusBundle:Default:index }
+
+#ove_thesaurus_parametrage:
+#    pattern:  /parametrage
+#    defaults: { _controller: OVEThesaurusBundle:Default:parametrage }
+
+
+
+ove_thesaurus_default:
+    resource: "@OVEThesaurusBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
+
+
+
+
+ove_thesaurus_thesaurus:
+    resource: "@OVEThesaurusBundle/Controller/thesaurusController.php"
+    type:     annotation
+    prefix:   /parametrage
+
+
+
+ove_thesaurus_terme:
+    resource: "@OVEThesaurusBundle/Controller/termeController.php"
+    type:     annotation
+    prefix:   /parametrage
+
+
+ove_thesaurus_webservice:
+    resource: "@OVEThesaurusBundle/Controller/webserviceController.php"
+    type:     annotation
+    prefix:   /
+
+
+
+

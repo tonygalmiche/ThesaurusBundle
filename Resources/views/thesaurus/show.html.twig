@@ -1,0 +1,29 @@
+{% extends "OVEAuthentificationBundle:Default:ove-base.html.twig" %}
+
+{% block content -%}
+    <h1>Thésaurus</h1>
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <a type="button" class="btn btn-sm btn-default" href="{{ path('thesaurus') }}"                               ><span class="glyphicon glyphicon-list"></span> Retour à la liste</a></p>
+    <a type="button" class="btn btn-sm btn-default" href="{{ path('thesaurus_edit'  , { 'id': entity.id } ) }}"  ><span class="glyphicon glyphicon-edit"></span> Modifier ce Thésaurus</a></p>             
+    <a type="button" class="btn btn-sm btn-default" href="{{ path('thesaurus_new') }}"                           ><span class="glyphicon glyphicon-plus"></span> Ajouter un nouveau Thésaurus</a></p></p>
+    {{ form(delete_form) }}
+
+
+ 
+</ul>
+
+
+{% endblock %}

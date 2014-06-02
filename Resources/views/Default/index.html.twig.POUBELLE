@@ -1,0 +1,34 @@
+{% extends "OVEAuthentificationBundle:Default:ove-base.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent()}}
+{% endblock %}
+
+
+{% block content %}
+  <h1>Gestion des Thésaurus</h1>
+
+  <form role="form">
+    {% for entity in entities %}
+      <a class="btn btn-default" href="thesaurus/{{ entity.id}}">{{ entity.nom }}</a></p>
+    {% endfor %}
+  </form>
+
+
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <input class="form-control" id="name" name="name" placeholder="Nouveau Thésaurus">
+    </div>
+    <button type="submit" class="btn btn-default">Créer</button>
+  </form>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+

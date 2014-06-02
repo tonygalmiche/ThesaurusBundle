@@ -1,0 +1,25 @@
+{% extends "OVEAuthentificationBundle:Default:ove-base.html.twig" %}
+{% block content -%}
+    <h1>Liste des Thésaurus</h1>
+    <table  width="400" class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td style="text-align:center"><a href="{{ path('thesaurus_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td style="text-align:left">{{ entity.nom }}</td>
+                <td style="text-align:center">
+                <a href="{{ path('thesaurus_edit',   { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a type="button" class="btn btn-sm btn-default" href="{{ path('thesaurus_new') }}"><span class="glyphicon glyphicon-plus"></span> Ajouter un nouveau Thésaurus</a>
+{% endblock %}

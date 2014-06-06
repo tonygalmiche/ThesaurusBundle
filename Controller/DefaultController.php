@@ -48,6 +48,8 @@ class DefaultController extends Controller
           $thesaurus = $em->getRepository('OVEThesaurusBundle:thesaurus')->findOneBy(array("id"=>$id));
           $url = "https://".$_SERVER['HTTP_HOST']."/webservice/thesaurus/$id"; 
           $json=file_get_contents ($url);
+          $json=str_replace("'","\'",$json);
+          $json=str_replace('"','\"',$json);
           //echo $json;
         }
         if($ROLE_PARAM) {

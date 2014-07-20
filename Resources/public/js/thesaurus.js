@@ -285,7 +285,7 @@ function create_terme(parent) {
   jQuery.ajax({
     type: 'GET', // Le type de ma requete
     dataType: "json",
-    url: '/app_dev.php/webservice/create_terme',   // L'url vers laquelle la requete sera envoyee
+    url: '../webservice/create_terme',   // L'url vers laquelle la requete sera envoyee
     data: {
         id_thesaurus: id_thesaurus,
         parent: parent,

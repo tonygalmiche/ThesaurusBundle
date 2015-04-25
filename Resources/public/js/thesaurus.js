@@ -4,6 +4,7 @@ $(function () {
   if(ROLE_PARAM) plugins= ["dnd", "search", "unique","sort"];
 
 
+
   //Doc : http://www.jstree.com/
   $('#jstree').jstree({
     "plugins" : plugins,

@@ -1,7 +1,7 @@
 $(function () {
 
-  plugins= ["search"];
-  if(ROLE_PARAM) plugins= ["dnd", "search", "unique"];
+  plugins= ["search","sort"];
+  if(ROLE_PARAM) plugins= ["dnd", "search", "unique","sort"];
 
 
   //Doc : http://www.jstree.com/
